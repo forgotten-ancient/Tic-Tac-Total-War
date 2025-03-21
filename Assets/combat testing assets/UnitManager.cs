@@ -3,20 +3,28 @@ using UnityEngine.AI;
 
 public class UnitManager : MonoBehaviour
 {
-    [SerializeField] public bool isPlayerUnit;
+    [SerializeField] private bool PlayerUnit;
     [SerializeField] private int health;
     [SerializeField] private int attack;
     private NavMeshAgent agent;
 
+    //PlayerUnit getter
+    public bool isPlayerUnit
+    {
+        get { return PlayerUnit; }
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //Get the NavMeshAgent component
         agent = gameObject.GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Debug stuff, basically allows you to move the units around before we have AI to do it for us
         if (isPlayerUnit)
         {
             if (Input.GetMouseButtonDown(0)) // Left-click

@@ -805,6 +805,10 @@ PrefabInstance:
       value: Unit
       objectReference: {fileID: 0}
     - target: {fileID: 5401553444563553510, guid: 73f96197afe72614cac479958305c90f, type: 3}
+      propertyPath: PlayerUnit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401553444563553510, guid: 73f96197afe72614cac479958305c90f, type: 3}
       propertyPath: isPlayerUnit
       value: 1
       objectReference: {fileID: 0}
