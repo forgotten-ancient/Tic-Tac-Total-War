@@ -5,12 +5,13 @@ public class CellManager : MonoBehaviour
 {
     private List<GameObject> PlayerUnits;
     private List<GameObject> EnemyUnits;
-    private bool isPlayerCell;
     private List<GameObject> FightingUnits;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        PlayerUnits = new List<GameObject>();
+        EnemyUnits = new List<GameObject>();
+        FightingUnits = new List<GameObject>();
     }
 
     // Update is called once per frame
