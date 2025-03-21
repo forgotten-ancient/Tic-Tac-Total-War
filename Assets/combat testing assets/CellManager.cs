@@ -3,12 +3,10 @@ using System.Collections.Generic;
 
 public class CellManager : MonoBehaviour
 {
-    [SerializeField] private GameObject CellA;
-    [SerializeField] private GameObject CellB;
-
-    private List<GameObject> unitsInCellA;
-    private List<GameObject> unitsInCellB;
-
+    private List<GameObject> PlayerUnits;
+    private List<GameObject> EnemyUnits;
+    private bool isPlayerCell;
+    private List<GameObject> FightingUnits;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,23 +19,44 @@ public class CellManager : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Unit")
+        if (other.gameObject.CompareTag("Unit"))
         {
-            float distanceA = Vector3.Distance(collision.transform.position, CellA.transform.position);
-            float distanceB = Vector3.Distance(collision.transform.position, CellB.transform.position);
+            ClaimUnit();
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Unit"))
+        {
+            ReleaseUnit();
+        }
+    }
 
-            if (distanceA < distanceB)
-            {
-                unitsInCellA.Add(collision.gameObject);
-                Debug.Log("Unit added to Cell A");
-            }
-            else
-            {
-                unitsInCellB.Add(collision.gameObject);
-                Debug.Log("Unit added to Cell B");
-            }
+    private void ClaimUnit(unit)
+    {
+        UnitManager unitManager = unit.GetComponent<UnitManager>();
+        if (unitManager.isPlayerUnit)
+        {
+            PlayerUnits.Add(unit);
+        }
+        else
+        {
+            EnemyUnits.Add(unit);
+        }
+    }
+
+    private void ReleaseUnit(unit)
+    {
+        UnitManager unitManager = unit.GetComponent<UnitManager>();
+        if (unitManager.isPlayerUnit)
+        {
+            PlayerUnits.Remove(unit);
+        }
+        else
+        {
+            EnemyUnits.Remove(unit);
         }
     }
 }
