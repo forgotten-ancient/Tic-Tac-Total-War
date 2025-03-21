@@ -18,7 +18,7 @@ public class CellManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log(object.name + " Player Units: " + PlayerUnits.Count + " Enemy Units: " + EnemyUnits.Count);
+            Debug.Log(gameObject.name + " Player Units: " + PlayerUnits.Count + " Enemy Units: " + EnemyUnits.Count);
         }
     }
 
