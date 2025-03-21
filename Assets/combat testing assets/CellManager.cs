@@ -16,26 +16,30 @@ public class CellManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Unit"))
         {
-            ClaimUnit();
+            ClaimUnit(other);
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Unit"))
         {
-            ReleaseUnit();
+            ReleaseUnit(other);
         }
     }
 
-    private void ClaimUnit(unit)
+    private void ClaimUnit(Collider unitCol)
     {
+        GameObject unit = unitCol.gameObject;
         UnitManager unitManager = unit.GetComponent<UnitManager>();
         if (unitManager.isPlayerUnit)
         {
@@ -47,8 +51,9 @@ public class CellManager : MonoBehaviour
         }
     }
 
-    private void ReleaseUnit(unit)
+    private void ReleaseUnit(Collider unitCol)
     {
+        GameObject unit = unitCol.gameObject;
         UnitManager unitManager = unit.GetComponent<UnitManager>();
         if (unitManager.isPlayerUnit)
         {

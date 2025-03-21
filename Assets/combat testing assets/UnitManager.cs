@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class UnitManager : MonoBehaviour
 {
-    [SerializeField] private bool isPlayerUnit;
+    [SerializeField] public bool isPlayerUnit;
     [SerializeField] private int health;
     [SerializeField] private int attack;
     private NavMeshAgent agent;
