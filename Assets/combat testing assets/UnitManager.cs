@@ -4,8 +4,7 @@ using UnityEngine.AI;
 public class UnitManager : MonoBehaviour
 {
     [SerializeField] private bool PlayerUnit;
-    [SerializeField] private int health;
-    [SerializeField] private int attack;
+    [SerializeField] public int health =  20;
     private NavMeshAgent agent;
 
     //PlayerUnit getter

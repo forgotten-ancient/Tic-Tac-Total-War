@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.AI;
+using System.Collections;
 using System.Collections.Generic;
 
 public class CellManager : MonoBehaviour
@@ -43,8 +45,54 @@ public class CellManager : MonoBehaviour
                 PlayerOwned = false;
             }
         }
+
+        //Manage combat
+        if (PlayerUnits.Count > 0 && EnemyUnits.Count > 0){
+            GameObject playerFighter = PlayerUnits[0];
+            GameObject enemyFighter = EnemyUnits[0];
+            PlayerUnits.Remove(playerFighter);
+            EnemyUnits.Remove(enemyFighter);
+            FightingUnits.Add(playerFighter);
+            FightingUnits.Add(enemyFighter);
+            StartCoroutine(RunFight(playerFighter, enemyFighter));
+        }
     }
 
+//Combat function
+    private IEnumerator RunFight(GameObject player, GameObject enemy){
+        UnitManager playerManager = player.GetComponent<UnitManager>();
+        UnitManager enemyManager = enemy.GetComponent<UnitManager>();
+        NavMeshAgent playerAgent = player.GetComponent<NavMeshAgent>();
+        NavMeshAgent enemyAgent = enemy.GetComponent<NavMeshAgent>();
+
+        Vector3 meetingPoint = (playerAgent.transform.position + enemyAgent.transform.position) / 2;
+        playerAgent.SetDestination(meetingPoint);
+        enemyAgent.SetDestination(meetingPoint);
+        
+        while (playerManager.health > 0 && enemyManager.health > 0){
+            bool playerGoesFirst = Random.Range(0, 1) == 0;
+            yield return new WaitForSeconds(0.5f);
+            if (playerGoesFirst){
+                playerManager.health -= Random.Range(3, 5);
+                enemyManager.health -= Random.Range(3, 5);
+            }else{
+                enemyManager.health -= Random.Range(3, 5);
+                playerManager.health -= Random.Range(3, 5);
+            }
+            Debug.Log(player.name + " health: " + playerManager.health + " " + enemy.name + " health: " + enemyManager.health);
+        }
+
+        if (playerManager.health <= 0){
+            FightingUnits.Remove(player);
+            Destroy(player);
+            EnemyUnits.Add(enemy);
+        }
+        if (enemyManager.health <= 0){
+            FightingUnits.Remove(enemy);
+            Destroy(enemy);
+            PlayerUnits.Add(player);
+        }
+    }
 
 //Logic for adding and removing units from the cell memory
     //When a unit enters the cell, run ClaimUnit
