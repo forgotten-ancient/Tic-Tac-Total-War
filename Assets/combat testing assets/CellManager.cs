@@ -9,7 +9,8 @@ public class CellManager : MonoBehaviour
     [SerializeField] Material EnemyMaterial;
     private List<GameObject> PlayerUnits;
     private List<GameObject> EnemyUnits;
-    private List<GameObject> FightingUnits;
+    private List<GameObject> FightingPlayerUnits;
+    private List<GameObject> FightingEnemyUnits;
 
     private bool PlayerOwned = false;
 
@@ -27,28 +28,23 @@ public class CellManager : MonoBehaviour
         //Initialize the lists
         PlayerUnits = new List<GameObject>();
         EnemyUnits = new List<GameObject>();
-        FightingUnits = new List<GameObject>();
+        FightingPlayerUnits = new List<GameObject>();
+        FightingEnemyUnits = new List<GameObject>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug Stuff
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log(gameObject.name + " Player Units: " + PlayerUnits.Count + " Enemy Units: " + EnemyUnits.Count + " PlayerOwned: " + PlayerOwned);
-        }
-
         //Switch cell ownership
         if (!PlayerOwned){
             cellRenderer.material = EnemyMaterial;
-            if (EnemyUnits.Count <= 0 && PlayerUnits.Count > 0){
+            if (EnemyUnits.Count <= 0 && FightingEnemyUnits.Count <= 0 && PlayerUnits.Count > 0){
                 PlayerOwned = true;
             }
         }
         if (PlayerOwned){
             cellRenderer.material = PlayerMaterial;
-            if (PlayerUnits.Count <= 0 && EnemyUnits.Count > 0){
+            if (PlayerUnits.Count <= 0 && FightingPlayerUnits.Count <= 0 && EnemyUnits.Count > 0){
                 PlayerOwned = false;
             }
         }
@@ -59,8 +55,8 @@ public class CellManager : MonoBehaviour
             GameObject enemyFighter = EnemyUnits[0];
             PlayerUnits.Remove(playerFighter);
             EnemyUnits.Remove(enemyFighter);
-            FightingUnits.Add(playerFighter);
-            FightingUnits.Add(enemyFighter);
+            FightingPlayerUnits.Add(playerFighter);
+            FightingEnemyUnits.Add(enemyFighter);
             StartCoroutine(RunFight(playerFighter, enemyFighter));
         }
     }
@@ -95,13 +91,13 @@ public class CellManager : MonoBehaviour
             Debug.Log(player.name + " health: " + playerManager.health + " " + enemy.name + " health: " + enemyManager.health);
         }
 
+        FightingPlayerUnits.Remove(player);
+        FightingEnemyUnits.Remove(enemy);
         if (playerManager.health <= 0){
-            FightingUnits.Remove(player);
             Destroy(player);
             EnemyUnits.Add(enemy);
         }
         if (enemyManager.health <= 0){
-            FightingUnits.Remove(enemy);
             Destroy(enemy);
             PlayerUnits.Add(player);
         }
