@@ -23,6 +23,10 @@ public class UnitManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (agent.hasPath && agent.remainingDistance < 1.0f)
+        {
+            agent.ResetPath();
+        }
         //Debug stuff, basically allows you to move the units around before we have AI to do it for us
         if (isPlayerUnit)
         {

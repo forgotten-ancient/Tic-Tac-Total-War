@@ -17,6 +17,7 @@ public class UnitSpawner : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             Vector3 mousePosition = Input.mousePosition;
+            mousePosition.z = Camera.main.transform.position.y; // Set z to the camera's height
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
             worldPosition.y = 0; // Ensure y is 0 for ground level
 
@@ -26,6 +27,7 @@ public class UnitSpawner : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             Vector3 mousePosition = Input.mousePosition;
+            mousePosition.z = Camera.main.transform.position.y; // Set z to the camera's height
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
             worldPosition.y = 0; // Ensure y is 0 for ground level
 
