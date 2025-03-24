@@ -71,6 +71,9 @@ public class CellManager : MonoBehaviour
         Vector3 meetingPoint = (playerAgent.transform.position + enemyAgent.transform.position) / 2;
         playerAgent.SetDestination(meetingPoint);
         enemyAgent.SetDestination(meetingPoint);
+        while (playerAgent.remainingDistance > 2f && enemyAgent.remainingDistance > 2f){
+            yield return null;
+        }
         
         while (playerManager.health > 0 && enemyManager.health > 0){
             bool playerGoesFirst = Random.Range(0, 1) == 0;
@@ -125,13 +128,17 @@ public class CellManager : MonoBehaviour
     {
         GameObject unit = unitCol.gameObject;
         UnitManager unitManager = unit.GetComponent<UnitManager>();
-        if (unitManager.isPlayerUnit)
+        if (!unitManager.AssignedToCell)
         {
-            PlayerUnits.Add(unit);
-        }
-        else
-        {
-            EnemyUnits.Add(unit);
+            if (unitManager.isPlayerUnit)
+            {
+                PlayerUnits.Add(unit);
+            }
+            else
+            {
+                EnemyUnits.Add(unit);
+            }
+            unitManager.AssignedToCell = true;
         }
     }
     //Remove the unit from the appropriate list
@@ -147,5 +154,6 @@ public class CellManager : MonoBehaviour
         {
             EnemyUnits.Remove(unit);
         }
+        unitManager.AssignedToCell = false;
     }
 }

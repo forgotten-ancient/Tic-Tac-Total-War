@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class UnitManager : MonoBehaviour
 {
     [SerializeField] private bool PlayerUnit;
+    [SerializeField] private Slider healthBar;
     [SerializeField] public int health =  20;
+    public bool AssignedToCell = false;
     private NavMeshAgent agent;
 
     //PlayerUnit getter
@@ -23,6 +26,10 @@ public class UnitManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //animate health bar
+        healthBar.value = health;
+        
+        //Check if the unit has reached its destination
         if (agent.hasPath && agent.remainingDistance < 1.0f)
         {
             agent.ResetPath();
