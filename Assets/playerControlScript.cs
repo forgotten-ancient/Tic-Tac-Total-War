@@ -7,6 +7,7 @@ public class playerControlScript : MonoBehaviour
     [SerializeField] private Transform projectileSpawnPoint; // An empty GameObject where the projectile will spawn
     [SerializeField] private float minLaunchVelocity = 1.0f;
     [SerializeField] private float maxLaunchVelocity = 5.0f;
+    [SerializeField] private float amplifier = 100.0f;
     private float currentLaunchVelocity;
     private bool isCharging = false;
     private float chargeStartTime;
@@ -57,8 +58,7 @@ public class playerControlScript : MonoBehaviour
                 Projectile projectileScript = projectileInstance.GetComponent<Projectile>();
                 if (projectileScript != null)
                 {
-                    Vector3 launchDirection = transform.forward; // Projectile goes in the direction the player is facing
-                    projectileScript.Launch(launchDirection * currentLaunchVelocity);
+                    projectileScript.Launch(currentLaunchVelocity * amplifier);
                 }
                 else
                 {

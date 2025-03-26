@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] private float LifeTime = 5f;
     private Rigidbody rb;
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = gameObject.GetComponent<Rigidbody>();
         if (rb == null)
         {
             Debug.LogError("Projectile needs a Rigidbody component.");
@@ -14,11 +15,11 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    public void Launch(Vector3 initialVelocity)
+    public void Launch(float initialForce)
     {
         if (rb != null)
         {
-            rb.linearVelocity = initialVelocity;
+            rb.AddForce(transform.forward * initialForce);
         }
     }
 
@@ -33,5 +34,11 @@ public class Projectile : MonoBehaviour
             // Apply the reflected velocity
             rb.linearVelocity = reflectedVelocity;
         }
+    }
+
+    void Update()
+    {
+        LifeTime -= Time.deltaTime;
+        if (LifeTime <= 0) Destroy(gameObject);
     }
 }
