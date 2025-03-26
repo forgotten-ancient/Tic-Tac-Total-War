@@ -1773,7 +1773,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4d3a358024704ae7af28201c8f8dd94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  rotationSpeed: 10
+  projectilePrefab: {fileID: 4786190347368623956, guid: f56e945ccd0a44e279f87521cca0a120, type: 3}
+  projectileSpawnPoint: {fileID: 1618896797}
+  minLaunchVelocity: 1
+  maxLaunchVelocity: 5
+  velocityIndicatorPrefab: {fileID: 0}
 --- !u!1 &1444852984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1896,7 +1901,7 @@ GameObject:
   - component: {fileID: 1447584561}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
