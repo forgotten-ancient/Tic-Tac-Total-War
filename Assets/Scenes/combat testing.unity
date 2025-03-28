@@ -562,6 +562,7 @@ GameObject:
   - component: {fileID: 823063585}
   - component: {fileID: 823063584}
   - component: {fileID: 823063586}
+  - component: {fileID: 823063587}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -643,6 +644,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerUnitPrefab: {fileID: 4790632687832488893, guid: 110358cfaa7489548a5b2fc00310f05c, type: 3}
   EnemyUnitPrefab: {fileID: 5613939610484847718, guid: 50ee56bab44ba90419863d6b53497bde, type: 3}
+--- !u!114 &823063587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823063583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdae8c8e5529d6438068d9a640f3f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerControlled: 0
 --- !u!1001 &892947419
 PrefabInstance:
   m_ObjectHideFlags: 0
