@@ -13,8 +13,8 @@ public class EnemyAI : MonoBehaviour
 
         foreach (GameObject Square in SquareObjects)
         {
-            Destination destination = Square.GetComponent<Destination>();
-            if (destination != null && destination.playerControlled)
+            CellManager destination = Square.GetComponent<CellManager>();
+            if (destination != null && destination.isPlayerOwned)
             {
                 Transform potentialTarget = Square.transform;
                 Vector3 directionToTarget = potentialTarget.position - currentPosition;

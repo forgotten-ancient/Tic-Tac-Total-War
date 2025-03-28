@@ -123,8 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d543166494cc59342ba65dfc788e196e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerMaterial: {fileID: 2100000, guid: e4b56c178348db449b6eadc9becd1787, type: 2}
-  EnemyMaterial: {fileID: 2100000, guid: 9aaa37574a7434642ae4fef7cdcfa083, type: 2}
+  PlayerMaterial: {fileID: 2100000, guid: 9aaa37574a7434642ae4fef7cdcfa083, type: 2}
+  EnemyMaterial: {fileID: 2100000, guid: e4b56c178348db449b6eadc9becd1787, type: 2}
 --- !u!1 &1448299958542337741
 GameObject:
   m_ObjectHideFlags: 0
