@@ -7,7 +7,9 @@ public class playerControlScript : MonoBehaviour
     [SerializeField] private Transform projectileSpawnPoint; // An empty GameObject where the projectile will spawn
     [SerializeField] private float minLaunchVelocity = 1.0f;
     [SerializeField] private float maxLaunchVelocity = 5.0f;
-    [SerializeField] private float amplifier = 100.0f;
+    [SerializeField] private float stepAmplifier = 1.0f;
+    [SerializeField] private float velocityAmplifier = 100.0f;
+    [SerializeField] private ChargeBarUIController chargeBarUIController;
     private float currentLaunchVelocity;
     private bool isCharging = false;
     private float chargeStartTime;
@@ -32,22 +34,36 @@ public class playerControlScript : MonoBehaviour
         }
 
         // Handle projectile launch
-        if (Input.GetMouseButtonDown(0)) // Left mouse button down
+        if (Input.GetMouseButtonDown(0) && !isPaused) // Left mouse button down
         {
             isCharging = true;
             chargeStartTime = Time.time;
             currentLaunchVelocity = minLaunchVelocity;
+
+            if (chargeBarUIController != null)
+            {
+                chargeBarUIController.StartCharging();
+            }
+            else
+            {
+                Debug.LogWarning("ChargeBarUIController not assigned in the Inspector of the Player!");
+            }
         }
 
-        if (isCharging && Input.GetMouseButton(0)) // Left mouse button is held down
+        if (isCharging && Input.GetMouseButton(0) && !isPaused) // Left mouse button is held down
         {
             float chargeDuration = Time.time - chargeStartTime;
-            currentLaunchVelocity = Mathf.Clamp(minLaunchVelocity + chargeDuration, minLaunchVelocity, maxLaunchVelocity);
+            currentLaunchVelocity = Mathf.Clamp(minLaunchVelocity + (chargeDuration * stepAmplifier), minLaunchVelocity, maxLaunchVelocity);
         }
 
-        if (Input.GetMouseButtonUp(0)) // Left mouse button released
+        if (Input.GetMouseButtonUp(0) && !isPaused) // Left mouse button released
         {
             isCharging = false;
+
+            if (chargeBarUIController != null)
+            {
+                chargeBarUIController.StopCharging();
+            }
 
             if (projectilePrefab != null && projectileSpawnPoint != null)
             {
@@ -58,7 +74,7 @@ public class playerControlScript : MonoBehaviour
                 Projectile projectileScript = projectileInstance.GetComponent<Projectile>();
                 if (projectileScript != null)
                 {
-                    projectileScript.Launch(currentLaunchVelocity * amplifier);
+                    projectileScript.Launch(currentLaunchVelocity * velocityAmplifier);
                 }
                 else
                 {
