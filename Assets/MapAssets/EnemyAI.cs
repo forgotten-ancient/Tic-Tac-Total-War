@@ -43,7 +43,8 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         if(agent.remainingDistance <= 0.01f){
-            agent.ResetPath();
+            //agent.ResetPath();
+           //Debug.Log("Reached Destination");
         }
     }
 }
