@@ -15,7 +15,6 @@ public class Destination : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("Space key was pressed.");
             EnemyAI[] allEnemies = Object.FindObjectsByType<EnemyAI>(FindObjectsSortMode.None); // Finds all EnemyAI instances
 
             foreach (EnemyAI enemy in allEnemies)
