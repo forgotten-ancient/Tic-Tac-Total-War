@@ -8,7 +8,7 @@ public class CellManager : MonoBehaviour
     //Insert colors for the player and enemy
     [SerializeField] Material PlayerMaterial;
     [SerializeField] Material EnemyMaterial;
-    [SerializeField] public Transform transform;
+
     //Create 4 lists, one of available units for each side, and one for the units currently fighting
     private List<GameObject> PlayerUnits;
     private List<GameObject> EnemyUnits;
