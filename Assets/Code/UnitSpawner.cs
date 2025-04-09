@@ -16,22 +16,20 @@ public class UnitSpawner : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = Camera.main.transform.position.y; // Set z to the camera's height
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-            worldPosition.y = 0; // Ensure y is 0 for ground level
+            RaycastHit hit;
 
-            Instantiate(PlayerUnitPrefab, worldPosition, Quaternion.identity);
+            if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition),out hit, 100)){
+                Instantiate(PlayerUnitPrefab, hit.point, Quaternion.identity);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = Camera.main.transform.position.y; // Set z to the camera's height
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-            worldPosition.y = 0; // Ensure y is 0 for ground level
+            RaycastHit hit;
 
-            Instantiate(EnemyUnitPrefab, worldPosition, Quaternion.identity);
+            if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition),out hit, 100)){
+                Instantiate(EnemyUnitPrefab, hit.point, Quaternion.identity);
+            }
         }
     }
 }
