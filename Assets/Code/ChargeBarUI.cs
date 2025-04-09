@@ -8,7 +8,7 @@ public class ChargeBarUIController : MonoBehaviour
     [SerializeField] private Color endColor = Color.red;
     private bool isCharging = false;
     private float chargeStartTime;
-    private float minChargeTime = 0f; // Corresponds to minLaunchVelocity
+    // private float minChargeTime = 0f; // Corresponds to minLaunchVelocity
     private float maxChargeTime = 4f; // Corresponds to maxLaunchVelocity - minLaunchVelocity (5 - 1)
 
     // Optional: Reference to the player control script for velocity info
