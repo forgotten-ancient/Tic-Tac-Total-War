@@ -85,38 +85,38 @@ public class playerControlScript : MonoBehaviour
         }
 
         // Handle pause input
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TogglePause();
-        }
+        // if (Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     TogglePause();
+        // }
     }
 
-    void TogglePause()
-    {
-        isPaused = !isPaused;
+    // void TogglePause()
+    // {
+    //     isPaused = !isPaused;
 
-        if (pauseMenuUI != null)
-        {
-            pauseMenuUI.SetActive(isPaused);
-        }
-        else
-        {
-            Debug.LogWarning("Pause Menu UI GameObject not assigned in the Inspector.");
-        }
+    //     if (pauseMenuUI != null)
+    //     {
+    //         pauseMenuUI.SetActive(isPaused);
+    //     }
+    //     else
+    //     {
+    //         Debug.LogWarning("Pause Menu UI GameObject not assigned in the Inspector.");
+    //     }
 
-        if (isPaused)
-        {
-            Time.timeScale = 0f; // Stop time
-        }
-        else
-        {
-            Time.timeScale = 1f; // Resume time
-        }
-    }
+    //     if (isPaused)
+    //     {
+    //         Time.timeScale = 0f; // Stop time
+    //     }
+    //     else
+    //     {
+    //         Time.timeScale = 1f; // Resume time
+    //     }
+    // }
 
-    // You might want to add a public method to resume from the pause menu button
-    public void ResumeGame()
-    {
-        TogglePause();
-    }
+    // // You might want to add a public method to resume from the pause menu button
+    // public void ResumeGame()
+    // {
+    //     TogglePause();
+    // }
 }
