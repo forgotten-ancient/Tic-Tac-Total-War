@@ -26,8 +26,6 @@ public class CellManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //Get the renderer component of the cell
-        cellRenderer = gameObject.GetComponent<Renderer>();
         //Initialize the lists
         PlayerUnits = new List<UnitManager>();
         EnemyUnits = new List<UnitManager>();
