@@ -8,7 +8,7 @@ public class UnitManager : MonoBehaviour
     [SerializeField] private Slider healthBar;
     [SerializeField] public int health =  20;
     public bool AssignedToCell = false;
-    private NavMeshAgent agent;
+    [SerializeField] public NavMeshAgent agent;
 
     //PlayerUnit getter
     public bool isPlayerUnit
@@ -19,8 +19,7 @@ public class UnitManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //Get the NavMeshAgent component
-        agent = gameObject.GetComponent<NavMeshAgent>();
+
     }
 
     // Update is called once per frame

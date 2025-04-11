@@ -402,6 +402,7 @@ MonoBehaviour:
   healthBar: {fileID: 6487327916201561414}
   health: 20
   AssignedToCell: 0
+  agent: {fileID: 90286330641436904}
 --- !u!114 &2203961904252283072
 MonoBehaviour:
   m_ObjectHideFlags: 0

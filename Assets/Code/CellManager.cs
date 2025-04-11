@@ -10,10 +10,10 @@ public class CellManager : MonoBehaviour
     [SerializeField] Material EnemyMaterial;
 
     //Create 4 lists, one of available units for each side, and one for the units currently fighting
-    private List<GameObject> PlayerUnits;
-    private List<GameObject> EnemyUnits;
-    private List<GameObject> FightingPlayerUnits;
-    private List<GameObject> FightingEnemyUnits;
+    private List<UnitManager> PlayerUnits;
+    private List<UnitManager> EnemyUnits;
+    private List<UnitManager> FightingPlayerUnits;
+    private List<UnitManager> FightingEnemyUnits;
     // A private boolean to track if the cell is owned by the player or enemy. Add a getter so its read-only from other scripts.
     private bool PlayerOwned = false;
     public bool isPlayerOwned
@@ -21,7 +21,7 @@ public class CellManager : MonoBehaviour
         get { return PlayerOwned; }
     }
     //Get the renderer
-    private Renderer cellRenderer;
+    [SerializeField] private Renderer cellRenderer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,10 +29,10 @@ public class CellManager : MonoBehaviour
         //Get the renderer component of the cell
         cellRenderer = gameObject.GetComponent<Renderer>();
         //Initialize the lists
-        PlayerUnits = new List<GameObject>();
-        EnemyUnits = new List<GameObject>();
-        FightingPlayerUnits = new List<GameObject>();
-        FightingEnemyUnits = new List<GameObject>();
+        PlayerUnits = new List<UnitManager>();
+        EnemyUnits = new List<UnitManager>();
+        FightingPlayerUnits = new List<UnitManager>();
+        FightingEnemyUnits = new List<UnitManager>();
     }
 
     // Update is called once per frame
@@ -84,8 +84,8 @@ public class CellManager : MonoBehaviour
         ////If there are non-fighting units on both sides, start a fight
         if (PlayerUnits.Count > 0 && EnemyUnits.Count > 0){
             //Pick a non-fighting unit from each side
-            GameObject playerFighter = PlayerUnits[0];
-            GameObject enemyFighter = EnemyUnits[0];
+            UnitManager playerFighter = PlayerUnits[0];
+            UnitManager enemyFighter = EnemyUnits[0];
             //Make sure they exist
             if (playerFighter == null || enemyFighter == null){
                 return;
@@ -101,51 +101,46 @@ public class CellManager : MonoBehaviour
     }
 
 //Combat function
-    private IEnumerator RunFight(GameObject player, GameObject enemy){
-        //Get the unit managers and navmesh agents for both units
-        UnitManager playerManager = player.GetComponent<UnitManager>();
-        UnitManager enemyManager = enemy.GetComponent<UnitManager>();
-        NavMeshAgent playerAgent = player.GetComponent<NavMeshAgent>();
-        NavMeshAgent enemyAgent = enemy.GetComponent<NavMeshAgent>();
+    private IEnumerator RunFight(UnitManager player, UnitManager enemy){
         //Find the meeting point between the two units
-        Vector3 meetingPoint = (playerAgent.transform.position + enemyAgent.transform.position) / 2;
+        Vector3 meetingPoint = (player.agent.transform.position + enemy.agent.transform.position) / 2;
         //Set the destination for both units to the meeting point
-        playerAgent.SetDestination(meetingPoint);
-        enemyAgent.SetDestination(meetingPoint);
+        player.agent.SetDestination(meetingPoint);
+        enemy.agent.SetDestination(meetingPoint);
         //Wait for both units to reach the meeting point
 
         //Keep running damage until one of the units is dead
-        while (playerManager.health >= 1 && enemyManager.health >= 1){
+        while (player.health >= 1 && enemy.health >= 1){
             //Determine who does damage first
             bool playerGoesFirst = Random.Range(0, 1) == 0;
             //Wait half a second
             yield return new WaitForSeconds(0.5f);
             //Deal damage to the units, and break out of the loop if one of them dies
             if (!playerGoesFirst){
-                playerManager.health -= Random.Range(3, 5);
-                if (playerManager.health <= 0){
+                player.health -= Random.Range(3, 5);
+                if (player.health <= 0){
                     break;
                 }
-                enemyManager.health -= Random.Range(3, 5);
+                enemy.health -= Random.Range(3, 5);
             }else{
-                enemyManager.health -= Random.Range(3, 5);
-                if (enemyManager.health <= 0){
+                enemy.health -= Random.Range(3, 5);
+                if (enemy.health <= 0){
                     break;
                 }
-                playerManager.health -= Random.Range(3, 5);
+                player.health -= Random.Range(3, 5);
             }
         }
         //One of the units should be dead, so remove both from the fighting lists
         FightingPlayerUnits.Remove(player);
         FightingEnemyUnits.Remove(enemy);
         //Destroy the dead unit and add the other to the appropriate list
-        if (playerManager.health <= 0){
+        if (player.health <= 0){
             EnemyUnits.Add(enemy);
-            Destroy(player);
+            Destroy(player.gameObject);
         }
-        if (enemyManager.health <= 0){
+        if (enemy.health <= 0){
             PlayerUnits.Add(player);
-            Destroy(enemy);
+            Destroy(enemy.gameObject);
         }
     }
 
@@ -169,11 +164,10 @@ public class CellManager : MonoBehaviour
     //Add the unit to the appropriate list
     private void ClaimUnit(Collider unitCol)
     {
-        GameObject unit = unitCol.gameObject;
-        UnitManager unitManager = unit.GetComponent<UnitManager>();
-        if (!unitManager.AssignedToCell)
+        UnitManager unit = unitCol.gameObject.GetComponent<UnitManager>();
+        if (!unit.AssignedToCell)
         {
-            if (unitManager.isPlayerUnit)
+            if (unit.isPlayerUnit)
             {
                 PlayerUnits.Add(unit);
             }
@@ -181,17 +175,16 @@ public class CellManager : MonoBehaviour
             {
                 EnemyUnits.Add(unit);
             }
-            unitManager.AssignedToCell = true;
+            unit.AssignedToCell = true;
         }
     }
     //Remove the unit from the appropriate list
     private void ReleaseUnit(Collider unitCol)
     {
-        GameObject unit = unitCol.gameObject;
-        UnitManager unitManager = unit.GetComponent<UnitManager>();
-        if (unitManager.AssignedToCell)
+        UnitManager unit = unitCol.gameObject.GetComponent<UnitManager>();
+        if (unit.AssignedToCell)
         {
-            if (unitManager.isPlayerUnit)
+            if (unit.isPlayerUnit)
             {
                 PlayerUnits.Remove(unit);
             }
@@ -199,7 +192,7 @@ public class CellManager : MonoBehaviour
             {
                 EnemyUnits.Remove(unit);
             }
-            unitManager.AssignedToCell = false;
+            unit.AssignedToCell = false;
 
         }
     }

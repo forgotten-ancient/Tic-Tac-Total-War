@@ -124,4 +124,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerMaterial: {fileID: 2100000, guid: e4b56c178348db449b6eadc9becd1787, type: 2}
   EnemyMaterial: {fileID: 2100000, guid: 9aaa37574a7434642ae4fef7cdcfa083, type: 2}
-  transform: {fileID: 7418313500589817857}
+  cellRenderer: {fileID: 882513739613502492}
