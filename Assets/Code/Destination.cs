@@ -22,12 +22,19 @@ public class Destination : MonoBehaviour
         {
             EnemyAI[] allEnemies = Object.FindObjectsByType<EnemyAI>(FindObjectsSortMode.None); // Finds all EnemyAI instances
 
-            int enemiesToAttack = Random.Range(minEnemiesToAttack, maxEnemiesToAttack + 1); // Randomly select number of enemies to attack
-            for (int i = 0; i < enemiesToAttack; i++)
+            // Check if there are any enemies to attack
+            if (allEnemies.Length > 0)
             {
-                int randomIndex = Random.Range(0, allEnemies.Length); // Select a random enemy from the array
-                EnemyAI selectedEnemy = allEnemies[randomIndex]; // Get the selected enemy
-                selectedEnemy.MoveEnemies(); // Call MoveEnemies() on the selected enemy
+                int enemiesToAttack = Random.Range(minEnemiesToAttack, maxEnemiesToAttack + 1); // Randomly select number of enemies to attack
+                // Make sure we don't try to attack more enemies than exist
+                enemiesToAttack = Mathf.Min(enemiesToAttack, allEnemies.Length);
+
+                for (int i = 0; i < enemiesToAttack; i++)
+                {
+                    int randomIndex = Random.Range(0, allEnemies.Length); // Select a random enemy from the array
+                    EnemyAI selectedEnemy = allEnemies[randomIndex]; // Get the selected enemy
+                    selectedEnemy.MoveEnemies(); // Call MoveEnemies() on the selected enemy
+                }
             }
 
             attackTime = Random.Range(minAttackTime, maxAttackTime); // Reset attack time to a random value between min and max
