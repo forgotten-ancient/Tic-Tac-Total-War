@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        ResetProgress();
     }
 
     public bool SpendCoins(int amount)

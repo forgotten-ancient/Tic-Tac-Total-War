@@ -21,10 +21,10 @@ public class ShopManager : MonoBehaviour
             GameManager.instance.AddSoldier();
             UpdateUI();
 
-            if (soldierPrefab != null && spawnPoint != null)
-            {
-                Instantiate(soldierPrefab, spawnPoint.position, spawnPoint.rotation);
-            }
+            // if (soldierPrefab != null && spawnPoint != null)
+            // {
+            //     Instantiate(soldierPrefab, spawnPoint.position, spawnPoint.rotation);
+            // }
         }
         else
         {
