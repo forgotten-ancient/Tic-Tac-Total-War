@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public int coins = 500;
     public int currentSoldiers = 0;
+    [SerializeField] Canvas canvas;
 
 
     private void Awake()
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         ResetProgress();
+        canvas.enabled = false;
     }
 
     public bool SpendCoins(int amount)
