@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public int coins = 500;
     public int currentSoldiers = 0;
-    [SerializeField] Canvas canvas;
+    [SerializeField] private Canvas canvas;
 
 
     private void Awake()

@@ -4,7 +4,6 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private float LifeTime = 5f;
     [SerializeField] private GameObject minionPrefab;
-    [SerializeField] private int unitCount;
     //unitCount will be replaced by a variable from another script once it is available.
     private Rigidbody rb;
 
@@ -44,13 +43,14 @@ public class Projectile : MonoBehaviour
         LifeTime -= Time.deltaTime;
         if (LifeTime <= 0)
         {
-            for (int i = 0; i < unitCount; i++)
+            for (int i = 0; i < GameManager.instance.currentSoldiers; i++)
             {
                 if (minionPrefab != null)
                 {
                     Instantiate(minionPrefab, transform.position, Quaternion.identity);
                 }
             }
+            GameManager.instance.currentSoldiers = 0;
             Destroy(gameObject);
         }
     }

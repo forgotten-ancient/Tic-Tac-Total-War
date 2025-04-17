@@ -151,4 +151,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LifeTime: 5
   minionPrefab: {fileID: 4790632687832488893, guid: 110358cfaa7489548a5b2fc00310f05c, type: 3}
-  unitCount: 1
+  gameManager: {fileID: 0}
