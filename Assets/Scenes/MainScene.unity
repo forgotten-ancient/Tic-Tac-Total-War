@@ -1042,7 +1042,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8668894602595437722, guid: de1fed83ba2fb4b0c89df53379721798, type: 3}
       propertyPath: maxLaunchVelocity
-      value: 20
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 8668894602595437722, guid: de1fed83ba2fb4b0c89df53379721798, type: 3}
+      propertyPath: velocityAmplifier
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8668894602595437722, guid: de1fed83ba2fb4b0c89df53379721798, type: 3}
       propertyPath: chargeBarUIController

@@ -527,7 +527,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 88bfce88496948f4cb1aa42146d101b6, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 17a89cf1c3585ee45975ae6e1c7234d2, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &823063585
 Transform:
@@ -583,7 +583,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfdae8c8e5529d6438068d9a640f3f34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerControlled: 0
+  maxAttackTime: 3
+  minAttackTime: 1
+  attackTime: 1
+  maxEnemiesToAttack: 5
+  minEnemiesToAttack: 1
 --- !u!114 &823063588
 MonoBehaviour:
   m_ObjectHideFlags: 0
