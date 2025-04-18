@@ -768,6 +768,10 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 92466294}
+    - target: {fileID: 1715209362050702530, guid: 8baa800c117042441824171a287b3a06, type: 3}
+      propertyPath: PassiveIncome
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5539285689056741737, guid: 8baa800c117042441824171a287b3a06, type: 3}
       propertyPath: m_Name
       value: GameManager
