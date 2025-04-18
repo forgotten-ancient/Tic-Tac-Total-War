@@ -22,7 +22,7 @@ public class ChargeBarUIController : MonoBehaviour
             enabled = false;
             return;
         }
-        chargeBarImage.gameObject.SetActive(false); // Hide the UI initially
+        chargeBarImage.gameObject.SetActive(true); // Hide the UI initially
     }
 
     void Update()
