@@ -924,6 +924,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cell
       objectReference: {fileID: 0}
+    - target: {fileID: 1391594308661641551, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 914712269}
     - target: {fileID: 7418313500589817857, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
