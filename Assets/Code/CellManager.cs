@@ -6,8 +6,9 @@ using System.Collections.Generic;
 public class CellManager : MonoBehaviour
 {
     //Insert colors for the player and enemy
-    [SerializeField] Material PlayerMaterial;
-    [SerializeField] Material EnemyMaterial;
+    [SerializeField] private Material PlayerMaterial;
+    [SerializeField] private Material EnemyMaterial;
+    [SerializeField] private GameManager GameManager;
 
     //Create 4 lists, one of available units for each side, and one for the units currently fighting
     private List<UnitManager> PlayerUnits;
@@ -20,6 +21,7 @@ public class CellManager : MonoBehaviour
     {
         get { return PlayerOwned; }
     }
+    private bool providingIncome = false;
     //Get the renderer
     [SerializeField] private Renderer cellRenderer;
 
@@ -70,12 +72,20 @@ public class CellManager : MonoBehaviour
             cellRenderer.material = EnemyMaterial;
             if (EnemyUnits.Count <= 0 && FightingEnemyUnits.Count <= 0 && PlayerUnits.Count > 0){
                 PlayerOwned = true;
+                if (!providingIncome){
+                    GameManager.PassiveIncome += 5;
+                    providingIncome = true;
+                }
             }
         }
         if (PlayerOwned){
             cellRenderer.material = PlayerMaterial;
             if (PlayerUnits.Count <= 0 && FightingPlayerUnits.Count <= 0 && EnemyUnits.Count > 0){
                 PlayerOwned = false;
+                if (providingIncome){
+                    GameManager.PassiveIncome -= 5;
+                    providingIncome = false;
+                }
             }
         }
 
@@ -134,11 +144,15 @@ public class CellManager : MonoBehaviour
         //Destroy the dead unit and add the other to the appropriate list
         if (player.health <= 0){
             EnemyUnits.Add(enemy);
-            Destroy(player.gameObject);
+            if (player!=null){
+                Destroy(player.gameObject);
+            }
         }
         if (enemy.health <= 0){
             PlayerUnits.Add(player);
-            Destroy(enemy.gameObject);
+            if (enemy!=null){
+                Destroy(enemy.gameObject);
+            }
         }
     }
 
