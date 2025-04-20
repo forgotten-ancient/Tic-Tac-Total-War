@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class WinLoseManager : MonoBehaviour
 {
     [SerializeField] GameObject endGameUI = null;
-    [SerializeField] GameObject boardManager = null;
-    [SerializeField] GameObject gameManager = null;
+    [SerializeField] GameObject boardManagerHolder = null;
+    [SerializeField] GameObject gameManagerHolder = null;
     private bool isPaused = false;
     private bool winCheck = false;
     private Text title;
@@ -27,11 +27,11 @@ public class WinLoseManager : MonoBehaviour
             resetButton.onClick.AddListener(Reset);
         }
 
-        if(!boardManager || !gameManager) {
+        if(!boardManagerHolder || !gameManagerHolder) {
             Debug.LogError("WinLoseManager requires a board manager and shop manager game object reference");
         } else {
-            game = gameManager.GetComponent<GameManager>();
-            board = boardManager.GetComponent<boardManager>();
+            game = gameManagerHolder.GetComponent<GameManager>();
+            board = boardManagerHolder.GetComponent<boardManager>();
         }
 
     }

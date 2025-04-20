@@ -462,6 +462,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 400643804}
+  - component: {fileID: 400643805}
   m_Layer: 0
   m_Name: EndGameHolder
   m_TagString: Untagged
@@ -484,6 +485,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &400643805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400643803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f59b8e24f0ae434ebe13f8b0ab774ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endGameUI: {fileID: 9179600459900711173}
+  boardManagerHolder: {fileID: 0}
+  gameManagerHolder: {fileID: 0}
 --- !u!1 &468965138
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,6 +820,7 @@ GameObject:
   - component: {fileID: 823063586}
   - component: {fileID: 823063587}
   - component: {fileID: 823063588}
+  - component: {fileID: 823063589}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -931,6 +948,18 @@ MonoBehaviour:
   SpawnTimeMax: 6
   SpawnTimeMin: 3
   SpawnChance: 0.2
+--- !u!114 &823063589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823063583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fdf31f59887c4c5c9e6f2d78b495736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &905128506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2546,6 +2575,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f77daa59444640c0b814b70da9e36f0, type: 3}
+--- !u!1 &9179600459900711173 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 284951070232985072, guid: 0f77daa59444640c0b814b70da9e36f0, type: 3}
+  m_PrefabInstance: {fileID: 9179600459900711172}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
