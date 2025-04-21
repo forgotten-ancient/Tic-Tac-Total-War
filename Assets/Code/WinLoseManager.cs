@@ -32,6 +32,8 @@ public class WinLoseManager : MonoBehaviour
         } else {
             game = gameManagerHolder.GetComponent<GameManager>();
             board = boardManagerHolder.GetComponent<boardManager>();
+            Debug.Log(game);
+            Debug.Log(board);
         }
 
     }
@@ -39,7 +41,7 @@ public class WinLoseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (endGameUI) {
+        if (endGameUI && board && game) {
             // if win condition check is true, end game and execute win condition code
             // else if (no soldiers left on board) and (money less than cheapest soldier {25?}),
             // end game and execute lose condition code
@@ -52,6 +54,10 @@ public class WinLoseManager : MonoBehaviour
                 loseCondition();
             }
 
+        } else {
+            Debug.Log(board);
+            Debug.Log(game);
+            Debug.LogError("UI, board, or game are missing in winLoseCondition.cs: Line 58");
         }
     }
 
