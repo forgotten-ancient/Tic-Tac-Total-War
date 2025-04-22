@@ -1,35 +1,37 @@
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public int coins = 500;
-    public int currentSoldiers = 0;
-    [SerializeField] private Canvas canvas;
 
-    [SerializeField] private float passiveIncomeTimer = 5f;
-    [SerializeField] private float incomeTimer = 1f;
-    public int PassiveIncome = 0;
+    public int coins = 500; 
+    public int currentSoldiers = 1; 
 
+  
+    public TextMeshProUGUI coinsText;
+    public TextMeshProUGUI soldiersText;
 
     private void Awake()
     {
-        
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
 
 
-            coins = PlayerPrefs.GetInt("Coins", 500);
-            currentSoldiers = PlayerPrefs.GetInt("Soldiers", 0);
+            coins = PlayerPrefs.GetInt("Coins", 500); 
+            currentSoldiers = PlayerPrefs.GetInt("Soldiers", 1);
+
+            Debug.Log("GameManager Initialized: Coins = " + coins + ", Soldiers = " + currentSoldiers);  
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(gameObject); 
         }
-        ResetProgress();
-        canvas.enabled = false;
+
+
+        UpdateUI();
     }
 
     public bool SpendCoins(int amount)
@@ -37,7 +39,9 @@ public class GameManager : MonoBehaviour
         if (coins >= amount)
         {
             coins -= amount;
-            PlayerPrefs.SetInt("Coins", coins);
+            Debug.Log("Coins after spending: " + coins);
+            PlayerPrefs.SetInt("Coins", coins); 
+            UpdateUI(); 
             return true;
         }
         return false;
@@ -46,7 +50,9 @@ public class GameManager : MonoBehaviour
     public void AddSoldier()
     {
         currentSoldiers++;
-        PlayerPrefs.SetInt("Soldiers", currentSoldiers);
+        Debug.Log("Soldiers after adding: " + currentSoldiers);
+        PlayerPrefs.SetInt("Soldiers", currentSoldiers); 
+        UpdateUI(); 
     }
 
     public void SaveProgress()
@@ -58,16 +64,18 @@ public class GameManager : MonoBehaviour
     public void ResetProgress()
     {
         coins = 500;
-        currentSoldiers = 0;
-        PlayerPrefs.SetInt("Coins", coins);
-        PlayerPrefs.SetInt("Soldiers", currentSoldiers);
+        currentSoldiers = 1;
+        SaveProgress();
+        UpdateUI();  
     }
 
-    void Update() {
-        incomeTimer -= Time.deltaTime;
-        if (incomeTimer <= 0){
-            coins += PassiveIncome;
-            incomeTimer = passiveIncomeTimer;
-        }
+    // update the UI txt
+    private void UpdateUI()
+    {
+        if (coinsText != null)
+            coinsText.text = "Coins: " + coins.ToString();
+
+        if (soldiersText != null)
+            soldiersText.text = "Soldiers: " + currentSoldiers.ToString();
     }
 }
