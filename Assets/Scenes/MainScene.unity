@@ -2463,6 +2463,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -189
       objectReference: {fileID: 0}
+    - target: {fileID: 6606627503791526353, guid: 900c86c7aa2c6224b93b1e804608b033, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6606627503791526353, guid: 900c86c7aa2c6224b93b1e804608b033, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6606627503791526353, guid: 900c86c7aa2c6224b93b1e804608b033, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7413622750133498951, guid: 900c86c7aa2c6224b93b1e804608b033, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

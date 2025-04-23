@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public int coins = 500; 
-    public int currentSoldiers = 1; 
+    public int currentSoldiers = 0; 
 
   
     public TextMeshProUGUI coinsText;
@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 
 
         UpdateUI();
+        ResetProgress();
     }
 
     public bool SpendCoins(int amount)
