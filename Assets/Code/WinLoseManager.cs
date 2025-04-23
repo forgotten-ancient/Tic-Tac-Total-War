@@ -58,6 +58,13 @@ public class WinLoseManager : MonoBehaviour
             Debug.Log(board);
             Debug.Log(game);
             Debug.LogError("UI, board, or game are missing in winLoseCondition.cs: Line 58");
+        
+            if ( gameManagerHolder == null ) {
+                Debug.LogError("Missing GameManager");
+                gameManagerHolder = GameObject.Find("GameManager");
+                game = gameManagerHolder.GetComponent<GameManager>();
+            }
+
         }
     }
 
