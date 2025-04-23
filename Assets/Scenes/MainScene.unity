@@ -233,6 +233,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cell (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1391594308661641551, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1450799360}
     - target: {fileID: 7418313500589817857, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -303,6 +307,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cell (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1391594308661641551, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1450799360}
     - target: {fileID: 7418313500589817857, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -384,6 +392,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cell (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1391594308661641551, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1450799360}
     - target: {fileID: 7418313500589817857, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -912,6 +924,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cell
       objectReference: {fileID: 0}
+    - target: {fileID: 1391594308661641551, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1450799360}
     - target: {fileID: 7418313500589817857, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -1545,6 +1561,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d543166494cc59342ba65dfc788e196e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1450799360 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1715209362050702530, guid: 8baa800c117042441824171a287b3a06, type: 3}
+  m_PrefabInstance: {fileID: 767558229}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db6dfded40199bc4da4754a79138856e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1530091674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1677,6 +1704,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cell (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1391594308661641551, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1450799360}
     - target: {fileID: 7418313500589817857, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -1769,6 +1800,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cell (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1391594308661641551, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1450799360}
     - target: {fileID: 7418313500589817857, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -1971,6 +2006,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cell (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1391594308661641551, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1450799360}
     - target: {fileID: 7418313500589817857, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -2052,6 +2091,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cell (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1391594308661641551, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1450799360}
     - target: {fileID: 7418313500589817857, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -2287,6 +2330,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cell (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1391594308661641551, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1450799360}
     - target: {fileID: 7418313500589817857, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
