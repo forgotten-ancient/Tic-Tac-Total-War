@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.EventSystems;  
 
 public class playerControlScript : MonoBehaviour
 {
@@ -20,104 +19,104 @@ public class playerControlScript : MonoBehaviour
 
     void Update()
     {
-        // Check if the pointer is over a UI element
-        if (!EventSystem.current.IsPointerOverGameObject())
-        {
-            // Player rotation based on mouse position
-            Vector3 mouseScreenPosition = Input.mousePosition;
-            Ray ray = Camera.main.ScreenPointToRay(mouseScreenPosition);
-            RaycastHit hit;
+        // Player rotation based on mouse position
+        Vector3 mouseScreenPosition = Input.mousePosition;
+        Ray ray = Camera.main.ScreenPointToRay(mouseScreenPosition);
+        RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit))
+        {
+            Vector3 worldMousePosition = hit.point;
+            Vector3 direction = worldMousePosition - transform.position;
+            direction.y = 0;
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, speed * Time.deltaTime);
+        }
+
+        // Handle projectile launch
+        if (Input.GetMouseButtonDown(0) && !isPaused) // Left mouse button down
+        {
+            isCharging = true;
+            chargeStartTime = Time.time;
+            currentLaunchVelocity = minLaunchVelocity;
+
+            if (chargeBarUIController != null)
             {
-                Vector3 worldMousePosition = hit.point;
-                Vector3 direction = worldMousePosition - transform.position;
-                direction.y = 0;
-                Quaternion targetRotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, speed * Time.deltaTime);
+                chargeBarUIController.StartCharging();
+            }
+            else
+            {
+                Debug.LogWarning("ChargeBarUIController not assigned in the Inspector of the Player!");
+            }
+        }
+
+        if (isCharging && Input.GetMouseButton(0) && !isPaused) // Left mouse button is held down
+        {
+            float chargeDuration = Time.time - chargeStartTime;
+            currentLaunchVelocity = Mathf.Clamp(minLaunchVelocity + (chargeDuration * stepAmplifier), minLaunchVelocity, maxLaunchVelocity);
+        }
+
+        if (Input.GetMouseButtonUp(0) && !isPaused) // Left mouse button released
+        {
+            isCharging = false;
+
+            if (chargeBarUIController != null)
+            {
+                chargeBarUIController.StopCharging();
             }
 
-            // Handle projectile launch
-            if (Input.GetMouseButtonDown(0) && !isPaused) // Left mouse button down
+            if (projectilePrefab != null && projectileSpawnPoint != null)
             {
-                isCharging = true;
-                chargeStartTime = Time.time;
-                currentLaunchVelocity = minLaunchVelocity;
+                // Instantiate the projectile
+                GameObject projectileInstance = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation);
 
-                if (chargeBarUIController != null)
+                // Get the Projectile script component and launch it
+                Projectile projectileScript = projectileInstance.GetComponent<Projectile>();
+                if (projectileScript != null)
                 {
-                    chargeBarUIController.StartCharging();
+                    projectileScript.Launch(currentLaunchVelocity * velocityAmplifier);
                 }
                 else
                 {
-                    Debug.LogWarning("ChargeBarUIController not assigned in the Inspector of the Player!");
-                }
-            }
-
-            if (isCharging && Input.GetMouseButton(0) && !isPaused) // Left mouse button is held down
-            {
-                float chargeDuration = Time.time - chargeStartTime;
-                currentLaunchVelocity = Mathf.Clamp(minLaunchVelocity + (chargeDuration * stepAmplifier), minLaunchVelocity, maxLaunchVelocity);
-            }
-
-            if (Input.GetMouseButtonUp(0) && !isPaused) // Left mouse button released
-            {
-                isCharging = false;
-
-                if (chargeBarUIController != null)
-                {
-                    chargeBarUIController.StopCharging();
-                }
-
-                if (projectilePrefab != null && projectileSpawnPoint != null)
-                {
-                    // Instantiate the projectile
-                    GameObject projectileInstance = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation);
-
-                    // Get the Projectile script component and launch it
-                    Projectile projectileScript = projectileInstance.GetComponent<Projectile>();
-                    if (projectileScript != null)
-                    {
-                        projectileScript.Launch(currentLaunchVelocity * velocityAmplifier);
-                    }
-                    else
-                    {
-                        Debug.LogError("Projectile prefab does not have a Projectile script attached.");
-                        Destroy(projectileInstance); // Clean up if script is missing
-                    }
+                    Debug.LogError("Projectile prefab does not have a Projectile script attached.");
+                    Destroy(projectileInstance); // Clean up if script is missing
                 }
             }
         }
+
+        // Handle pause input
+        // if (Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     TogglePause();
+        // }
     }
 
-    // You can uncomment and modify this section for pause functionality if needed
-    /*
-    void TogglePause()
-    {
-        isPaused = !isPaused;
+    // void TogglePause()
+    // {
+    //     isPaused = !isPaused;
 
-        if (pauseMenuUI != null)
-        {
-            pauseMenuUI.SetActive(isPaused);
-        }
-        else
-        {
-            Debug.LogWarning("Pause Menu UI GameObject not assigned in the Inspector.");
-        }
+    //     if (pauseMenuUI != null)
+    //     {
+    //         pauseMenuUI.SetActive(isPaused);
+    //     }
+    //     else
+    //     {
+    //         Debug.LogWarning("Pause Menu UI GameObject not assigned in the Inspector.");
+    //     }
 
-        if (isPaused)
-        {
-            Time.timeScale = 0f; // Stop time
-        }
-        else
-        {
-            Time.timeScale = 1f; // Resume time
-        }
-    }
+    //     if (isPaused)
+    //     {
+    //         Time.timeScale = 0f; // Stop time
+    //     }
+    //     else
+    //     {
+    //         Time.timeScale = 1f; // Resume time
+    //     }
+    // }
 
-    public void ResumeGame()
-    {
-        TogglePause();
-    }
-    */
+    // // You might want to add a public method to resume from the pause menu button
+    // public void ResumeGame()
+    // {
+    //     TogglePause();
+    // }
 }
