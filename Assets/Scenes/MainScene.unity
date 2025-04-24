@@ -119,11 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &1857344 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5539285689056741737, guid: 8baa800c117042441824171a287b3a06, type: 3}
-  m_PrefabInstance: {fileID: 767558229}
+--- !u!114 &5 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6675685355252951519, guid: 25dc3c7f7060cdf4f9b36968540d7528, type: 3}
+  m_PrefabInstance: {fileID: 2040647775}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c40741015ed0f4b4e9dd7bf1acf24e37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &80601496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -241,7 +247,7 @@ PrefabInstance:
     - target: {fileID: 1391594308661641551, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: GameManager
       value: 
-      objectReference: {fileID: 1450799360}
+      objectReference: {fileID: 767558231}
     - target: {fileID: 7418313500589817857, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -315,7 +321,7 @@ PrefabInstance:
     - target: {fileID: 1391594308661641551, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: GameManager
       value: 
-      objectReference: {fileID: 1450799360}
+      objectReference: {fileID: 767558231}
     - target: {fileID: 7418313500589817857, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -400,7 +406,7 @@ PrefabInstance:
     - target: {fileID: 1391594308661641551, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: GameManager
       value: 
-      objectReference: {fileID: 1450799360}
+      objectReference: {fileID: 767558231}
     - target: {fileID: 7418313500589817857, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -516,7 +522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endGameUI: {fileID: 510402219}
   boardManagerHolder: {fileID: 823063583}
-  gameManagerHolder: {fileID: 1857344}
+  gameManagerHolder: {fileID: 767558230}
 --- !u!1 &468965138
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,6 +826,14 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 92466294}
+    - target: {fileID: 1715209362050702530, guid: 8baa800c117042441824171a287b3a06, type: 3}
+      propertyPath: shopManager
+      value: 
+      objectReference: {fileID: 5}
+    - target: {fileID: 1715209362050702530, guid: 8baa800c117042441824171a287b3a06, type: 3}
+      propertyPath: playerControlScript
+      value: 
+      objectReference: {fileID: 1952127763}
     - target: {fileID: 5539285689056741737, guid: 8baa800c117042441824171a287b3a06, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -829,6 +843,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8baa800c117042441824171a287b3a06, type: 3}
+--- !u!1 &767558230 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5539285689056741737, guid: 8baa800c117042441824171a287b3a06, type: 3}
+  m_PrefabInstance: {fileID: 767558229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &767558231 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1715209362050702530, guid: 8baa800c117042441824171a287b3a06, type: 3}
+  m_PrefabInstance: {fileID: 767558229}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767558230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db6dfded40199bc4da4754a79138856e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &823063583
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,8 +966,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfdae8c8e5529d6438068d9a640f3f34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAttackTime: 3
-  minAttackTime: 1
+  maxAttackTime: 20
+  minAttackTime: 10
   attackTime: 1
   maxEnemiesToAttack: 5
   minEnemiesToAttack: 1
@@ -997,7 +1027,7 @@ PrefabInstance:
     - target: {fileID: 1391594308661641551, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: GameManager
       value: 
-      objectReference: {fileID: 1450799360}
+      objectReference: {fileID: 767558231}
     - target: {fileID: 7418313500589817857, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -1056,6 +1086,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7418313500589817857, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
   m_PrefabInstance: {fileID: 905128506}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1038253360 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2811298053652705953, guid: 6f3759c630a1ddb45895f38d515f5845, type: 3}
+  m_PrefabInstance: {fileID: 2064395538}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1191646871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1631,17 +1672,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d543166494cc59342ba65dfc788e196e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1450799360 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1715209362050702530, guid: 8baa800c117042441824171a287b3a06, type: 3}
-  m_PrefabInstance: {fileID: 767558229}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1857344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db6dfded40199bc4da4754a79138856e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1530091674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1777,7 +1807,7 @@ PrefabInstance:
     - target: {fileID: 1391594308661641551, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: GameManager
       value: 
-      objectReference: {fileID: 1450799360}
+      objectReference: {fileID: 767558231}
     - target: {fileID: 7418313500589817857, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -1873,7 +1903,7 @@ PrefabInstance:
     - target: {fileID: 1391594308661641551, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: GameManager
       value: 
-      objectReference: {fileID: 1450799360}
+      objectReference: {fileID: 767558231}
     - target: {fileID: 7418313500589817857, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -2064,6 +2094,17 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &1952127763 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8668894602595437722, guid: de1fed83ba2fb4b0c89df53379721798, type: 3}
+  m_PrefabInstance: {fileID: 1220272464}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4d3a358024704ae7af28201c8f8dd94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1974731326
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2079,7 +2120,7 @@ PrefabInstance:
     - target: {fileID: 1391594308661641551, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: GameManager
       value: 
-      objectReference: {fileID: 1450799360}
+      objectReference: {fileID: 767558231}
     - target: {fileID: 7418313500589817857, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -2261,7 +2302,7 @@ PrefabInstance:
     - target: {fileID: 1391594308661641551, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: GameManager
       value: 
-      objectReference: {fileID: 1450799360}
+      objectReference: {fileID: 767558231}
     - target: {fileID: 7418313500589817857, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -2379,6 +2420,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6675685355252951519, guid: 25dc3c7f7060cdf4f9b36968540d7528, type: 3}
+      propertyPath: coinsText
+      value: 
+      objectReference: {fileID: 1038253360}
+    - target: {fileID: 6675685355252951519, guid: 25dc3c7f7060cdf4f9b36968540d7528, type: 3}
+      propertyPath: soldiersText
+      value: 
+      objectReference: {fileID: 2112163270}
     - target: {fileID: 6727755516107140994, guid: 25dc3c7f7060cdf4f9b36968540d7528, type: 3}
       propertyPath: m_Name
       value: ShopManager
@@ -2396,6 +2445,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1262909317327270918, guid: 6f3759c630a1ddb45895f38d515f5845, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2140428510475079787, guid: 6f3759c630a1ddb45895f38d515f5845, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -2485,6 +2538,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f3759c630a1ddb45895f38d515f5845, type: 3}
+--- !u!114 &2112163270 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4706976470790165905, guid: 6f3759c630a1ddb45895f38d515f5845, type: 3}
+  m_PrefabInstance: {fileID: 2064395538}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2144228925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2500,7 +2564,7 @@ PrefabInstance:
     - target: {fileID: 1391594308661641551, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: GameManager
       value: 
-      objectReference: {fileID: 1450799360}
+      objectReference: {fileID: 767558231}
     - target: {fileID: 7418313500589817857, guid: 92f67b82b939bdc48a2860e4f355baad, type: 3}
       propertyPath: m_LocalScale.x
       value: 2

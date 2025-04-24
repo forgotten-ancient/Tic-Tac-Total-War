@@ -20,7 +20,6 @@ public class ShopManager : MonoBehaviour
         {
             GameManager.instance.AddSoldier();
             UpdateUI();
-
             // if (soldierPrefab != null && spawnPoint != null)
             // {
             //     Instantiate(soldierPrefab, spawnPoint.position, spawnPoint.rotation);
@@ -32,7 +31,7 @@ public class ShopManager : MonoBehaviour
         }
     }
 //updates the text - amount of coins, amount of soldiers bought/in inventory
-    void UpdateUI()
+    public void UpdateUI()
     {
         coinsText.text = "Coins: " + GameManager.instance.coins.ToString();
         soldiersText.text = "Soldiers: " + GameManager.instance.currentSoldiers.ToString();

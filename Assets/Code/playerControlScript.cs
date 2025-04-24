@@ -15,7 +15,7 @@ public class playerControlScript : MonoBehaviour
     private float chargeStartTime;
 
     [SerializeField] private GameObject pauseMenuUI; // Assign your pause menu UI GameObject here
-    private bool isPaused = false;
+    public bool isPaused = false;
 
     void Update()
     {

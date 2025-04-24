@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float passiveIncomeTimer = 5f;
     [SerializeField] private float incomeTimer = 1f;
     public int PassiveIncome = 0;
-
-
+    [SerializeField] private ShopManager shopManager;
+    [SerializeField] private playerControlScript playerControlScript;
     private void Awake()
     {
         
@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     public void AddSoldier()
     {
         currentSoldiers++;
+        shopManager.UpdateUI();
         PlayerPrefs.SetInt("Soldiers", currentSoldiers);
     }
 
@@ -69,5 +70,12 @@ public class GameManager : MonoBehaviour
             coins += PassiveIncome;
             incomeTimer = passiveIncomeTimer;
         }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            // flip the enabled state
+            canvas.enabled = !canvas.enabled;
+            playerControlScript.isPaused = !playerControlScript.isPaused;
+        }
+        shopManager.UpdateUI();
     }
 }

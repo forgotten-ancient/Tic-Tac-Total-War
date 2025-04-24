@@ -6,7 +6,7 @@ public class ChargeBarUIController : MonoBehaviour
     [SerializeField] private Image chargeBarImage;
     [SerializeField] private Color startColor = Color.yellow;
     [SerializeField] private Color endColor = Color.red;
-    private bool isCharging = false;
+    private bool isCharging;
     private float chargeStartTime;
     // private float minChargeTime = 0f; // Corresponds to minLaunchVelocity
     private float maxChargeTime = 4f; // Corresponds to maxLaunchVelocity - minLaunchVelocity (5 - 1)

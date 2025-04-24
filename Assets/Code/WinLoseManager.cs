@@ -49,9 +49,9 @@ public class WinLoseManager : MonoBehaviour
             if (winCheck) {
                 // win condition execute
                 winCondition();
-            } else if (game.coins < 25 && game.currentSoldiers <=0) {
-                // lose condition execute
-                loseCondition();
+            // } else if (game.coins < 25 && game.currentSoldiers <=0) {
+            //     // lose condition execute
+            //     loseCondition();
             } else if (!winCheck && !(game.coins < 25 && game.currentSoldiers <=0)){
                 endGameUI.SetActive(false);
             }
@@ -82,7 +82,7 @@ public class WinLoseManager : MonoBehaviour
     }
 
     // function to unpause game
-    void Reset() {
+    public void Reset() {
         Debug.Log("Reset Called");
         // Set time scale to 1 to resume time
         Time.timeScale = 1f;
