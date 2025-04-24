@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4504613066701767184
+--- !u!1 &1038525356866864262
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9177766057533725241}
-  - component: {fileID: 6378006309949895920}
+  - component: {fileID: 1400458318679942748}
+  - component: {fileID: 9018914602662418716}
   m_Layer: 0
-  m_Name: ShopManager
+  m_Name: ShopUIController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9177766057533725241
+--- !u!4 &1400458318679942748
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4504613066701767184}
+  m_GameObject: {fileID: 1038525356866864262}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 208.51373, y: 213.774, z: -2.48479}
+  m_LocalPosition: {x: 308.9429, y: 234.79611, z: -279.54248}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6378006309949895920
+--- !u!114 &9018914602662418716
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4504613066701767184}
+  m_GameObject: {fileID: 1038525356866864262}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c40741015ed0f4b4e9dd7bf1acf24e37, type: 3}
+  m_Script: {fileID: 11500000, guid: af0bd289605b2154a91bf5e3f641efdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinsText: {fileID: 0}
-  soldiersText: {fileID: 0}
-  soldierCost: 25
-  soldierPrefab: {fileID: 0}
-  spawnPoint: {fileID: 0}
-  openShopButton: {fileID: 0}
   shopPanel: {fileID: 0}
+  openShopButton: {fileID: 0}
