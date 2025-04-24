@@ -52,6 +52,8 @@ public class WinLoseManager : MonoBehaviour
             } else if (game.coins < 25 && game.currentSoldiers <=0) {
                 // lose condition execute
                 loseCondition();
+            } else if (!winCheck && !(game.coins < 25 && game.currentSoldiers <=0)){
+                endGameUI.SetActive(false);
             }
 
         } else {
@@ -96,12 +98,12 @@ public class WinLoseManager : MonoBehaviour
     void winCondition() {
         PauseGame();
         title.text = "You Win!";
-        
+        endGameUI.SetActive(true);
     }
 
     void loseCondition() {
         PauseGame();
         title.text = "You Lose.";
-
+        endGameUI.SetActive(true);
     }
 }
