@@ -72,4 +72,13 @@ public class boardManager : MonoBehaviour
 
         return false;
     }
+
+    public bool checkWinCondition() {
+        for (int i = 0; i < squareScripts.Count; i++)
+        {
+            playerOwnedGrid[i] = squareScripts[i].isPlayerOwned;
+            // Debug.Log($"Is {squareScripts[i].gameObject.name} player owned: [{playerOwnedGrid[i]}]");
+        }
+        return winConditionMet(playerOwnedGrid);
+    }
 }
