@@ -68,6 +68,9 @@ public class WinLoseManager : MonoBehaviour
             }
 
         }
+        if (!isPaused){
+            Time.timeScale = 1f;
+        }
     }
 
     // function to pause game
