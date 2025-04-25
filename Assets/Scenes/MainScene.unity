@@ -2483,7 +2483,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1936461560501318382, guid: 6f3759c630a1ddb45895f38d515f5845, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1936461560501318382, guid: 6f3759c630a1ddb45895f38d515f5845, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5}
+    - target: {fileID: 1936461560501318382, guid: 6f3759c630a1ddb45895f38d515f5845, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuySoldier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1936461560501318382, guid: 6f3759c630a1ddb45895f38d515f5845, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1936461560501318382, guid: 6f3759c630a1ddb45895f38d515f5845, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2140428510475079787, guid: 6f3759c630a1ddb45895f38d515f5845, type: 3}
       propertyPath: m_Name
